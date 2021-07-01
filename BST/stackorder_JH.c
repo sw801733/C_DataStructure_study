@@ -55,27 +55,27 @@ addToBST(int v)
 	}
 }
 
-// Çª½ÃÇª½Ã BST Çª½Ã
+// í‘¸ì‹œí‘¸ì‹œ BST í‘¸ì‹œ
 void push(struct node* node)
 {
-	if (top < size - 1) // Á¶°Ç ¸Ç³¯ Ã¡´Ï ºñ¾ú´Ï ÇÔ¼ö ½è´Âµ¥ ÀÌ·¸°Ô ÇÏ´Â ¹æ¹ıÀÌ ÀÖ¾úÀ½
+	if (top < size - 1) // ì¡°ê±´ ë§¨ë‚  ì°¼ë‹ˆ ë¹„ì—ˆë‹ˆ í•¨ìˆ˜ ì¼ëŠ”ë° ì´ë ‡ê²Œ í•˜ëŠ” ë°©ë²•ì´ ìˆì—ˆìŒ
 	{
 		stack[++top] = node;
 	}
 }
 
-// ÆËÆË BST ÆË
+// íŒíŒ BST íŒ
 struct node* pop()
 {
 	struct node* node = NULL;
-	if (top >= 0) // À¯·¹Ä« ¿´À½
+	if (top >= 0) // ìœ ë ˆì¹´ ì˜€ìŒ
 	{
 		node = stack[top--];
 	}
 	return node;
 }
 
-void Preorder(struct node* node) // ÀüÀ§ ¼øÈ¸¸¦ ½ºÅÃÀ¸·Î Ç¥Çö ÇÑ °ÍÀÓ
+void Preorder(struct node* node) // ì „ìœ„ ìˆœíšŒë¥¼ ìŠ¤íƒìœ¼ë¡œ í‘œí˜„ í•œ ê²ƒì„
 {
 	push(node);
 	while (1)
@@ -91,7 +91,7 @@ void Preorder(struct node* node) // ÀüÀ§ ¼øÈ¸¸¦ ½ºÅÃÀ¸·Î Ç¥Çö ÇÑ °ÍÀÓ
 	}
 }
 
-void Inorder(struct node* node) // ÁßÀ§ ¼øÈ¸¸¦  ½ºÅÃÀ¸·Î Ç¥ÇöÇÑ °ÍÀÓ 
+void Inorder(struct node* node) // ì¤‘ìœ„ ìˆœíšŒë¥¼  ìŠ¤íƒìœ¼ë¡œ í‘œí˜„í•œ ê²ƒì„ 
 {
 	while (1)
 	{
@@ -109,7 +109,7 @@ void Inorder(struct node* node) // ÁßÀ§ ¼øÈ¸¸¦  ½ºÅÃÀ¸·Î Ç¥ÇöÇÑ °ÍÀÓ
 	}
 }
 
-void Postorder(struct node* node) // ÈÄÀ§ ¼øÈ¸¸¦ ½ºÅÃÀ¸·Î Ç¥ÇöÇÑ °ÍÀÓ
+void Postorder(struct node* node) // í›„ìœ„ ìˆœíšŒë¥¼ ìŠ¤íƒìœ¼ë¡œ í‘œí˜„í•œ ê²ƒì„
 {
 	while (1)
 	{
