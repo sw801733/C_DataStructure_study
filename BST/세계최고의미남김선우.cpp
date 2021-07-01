@@ -17,15 +17,15 @@ struct node* rotate_LL(struct node* parent)
 	return child;
 }
 
-// LL È¸Àü (¿À¸¥ÂÊÀ¸·Î È¸ÀüÇÑ´Ù)
+// LL íšŒì „ (ì˜¤ë¥¸ìª½ìœ¼ë¡œ íšŒì „í•œë‹¤)
 //     A
 //    /                B
 //   B        ->      / \
 //  /                C   A
 // C
 //
-// ¡¾2¸¦ °¡Áö´Â A°¡ ºÎ¸ð°¡ µÇ°í A->left_childÀÎ B°¡ child°¡ µÈ´Ù.
-// A->left¿¡ B°¡ °¡Áö°í ÀÖ´Â right_child¸¦ ´ëÀÔÇÏ°í BÀÇ right_child¿¡ AÀ» ´ëÀÔÇÑ´Ù.
+// Â±2ë¥¼ ê°€ì§€ëŠ” Aê°€ ë¶€ëª¨ê°€ ë˜ê³  A->left_childì¸ Bê°€ childê°€ ëœë‹¤.
+// A->leftì— Bê°€ ê°€ì§€ê³  ìžˆëŠ” right_childë¥¼ ëŒ€ìž…í•˜ê³  Bì˜ right_childì— Aì„ ëŒ€ìž…í•œë‹¤.
 struct node* rotate_RR(struct node* parent)
 {
 	struct node* child = parent->right ;
@@ -33,49 +33,49 @@ struct node* rotate_RR(struct node* parent)
 	child->left = parent;
 	return child;
 }
-// RR È¸Àü (¿ÞÂÊÀ¸·Î È¸ÀüÇÑ´Ù)
+// RR íšŒì „ (ì™¼ìª½ìœ¼ë¡œ íšŒì „í•œë‹¤)
 //     A
 //      \               B
 //       B     ->      / \
 //        \           A   C
 //         C
 //
-// ¡¾2¸¦ °¡Áö´Â A°¡ ºÎ¸ð°¡ µÇ°í A->right_childÀÎ B°¡ child°¡ µÈ´Ù.
-// A->right¿¡ B°¡ °¡Áö°í ÀÖ´Â left_child¸¦ ´ëÀÔÇÏ°í BÀÇ left_child¿¡ AÀ» ´ëÀÔÇÑ´Ù.
+// Â±2ë¥¼ ê°€ì§€ëŠ” Aê°€ ë¶€ëª¨ê°€ ë˜ê³  A->right_childì¸ Bê°€ childê°€ ëœë‹¤.
+// A->rightì— Bê°€ ê°€ì§€ê³  ìžˆëŠ” left_childë¥¼ ëŒ€ìž…í•˜ê³  Bì˜ left_childì— Aì„ ëŒ€ìž…í•œë‹¤.
 struct node* rotate_RL(struct node* parent)
 {
 	struct node* child = parent->right ;
 	parent->right  = rotate_LL(child);
 	return rotate_RR(parent);
 }
-// RL È¸Àü (¿À¸¥ÂÊ-¿ÞÂÊÀ¸·Î È¸ÀüÇÑ´Ù)
+// RL íšŒì „ (ì˜¤ë¥¸ìª½-ì™¼ìª½ìœ¼ë¡œ íšŒì „í•œë‹¤)
 //     A                A              
 //      \                \                C
 //       B      ->        C      ->      / \
 //      /                  \            A   B
 //     C                    B
 //
-// ¡¾2¸¦ °¡Áö´Â A°¡ ºÎ¸ð°¡ µÇ°í A->right_childÀÎ B°¡ child°¡ µÈ´Ù.
-// A->right_child¿¡ rotate_LL(B)°¡ ¹ÝÈ¯ÇÏ´Â °ªÀ» ´ëÀÔÇÑ´Ù. (B,C¿¡ ´ëÇØ ¿À¸¥ÂÊ È¸Àü)
-// rotate_LL(B)È£Ãâ½Ã B¿Í C°¡ º¯È­°¡ »ý±â°í ´Ù½Ã rotate_RR(A)À» È£ÃâÇÏ¸é ±ÕÇüÆ®¸®°¡ µÈ´Ù. 
+// Â±2ë¥¼ ê°€ì§€ëŠ” Aê°€ ë¶€ëª¨ê°€ ë˜ê³  A->right_childì¸ Bê°€ childê°€ ëœë‹¤.
+// A->right_childì— rotate_LL(B)ê°€ ë°˜í™˜í•˜ëŠ” ê°’ì„ ëŒ€ìž…í•œë‹¤. (B,Cì— ëŒ€í•´ ì˜¤ë¥¸ìª½ íšŒì „)
+// rotate_LL(B)í˜¸ì¶œì‹œ Bì™€ Cê°€ ë³€í™”ê°€ ìƒê¸°ê³  ë‹¤ì‹œ rotate_RR(A)ì„ í˜¸ì¶œí•˜ë©´ ê· í˜•íŠ¸ë¦¬ê°€ ëœë‹¤. 
 struct node* rotate_LR(struct node* parent)
 {
 	struct node* child = parent->left ;
 	parent->left  = rotate_RR(child);
 	return rotate_LL(parent);
 }
-// LR È¸Àü (¿ÞÂÊ-¿À¸¥ÂÊÀ¸·Î È¸ÀüÇÑ´Ù)
+// LR íšŒì „ (ì™¼ìª½-ì˜¤ë¥¸ìª½ìœ¼ë¡œ íšŒì „í•œë‹¤)
 //     A                 A              
 //	  /                 /                  C
 //   B         ->      C          ->      / \
 //    \               /                  A   B
 //     C             B      
 //
-// ¡¾2¸¦ °¡Áö´Â A°¡ ºÎ¸ð°¡ µÇ°í A->left_childÀÎ B°¡ child°¡ µÈ´Ù.
-// A->left_child¿¡ rotate_RR(B)°¡ ¹ÝÈ¯ÇÏ´Â °ªÀ» ´ëÀÔÇÑ´Ù. (B,C¿¡ ´ëÇØ ¿ÞÂÊ È¸Àü)
-// rotate_RR(B)È£Ãâ½Ã B¿Í C°¡ º¯È­°¡ »ý±â°í ´Ù½Ã rotate_LL(A)À» È£ÃâÇÏ¸é ±ÕÇüÆ®¸®°¡ µÈ´Ù. 
+// Â±2ë¥¼ ê°€ì§€ëŠ” Aê°€ ë¶€ëª¨ê°€ ë˜ê³  A->left_childì¸ Bê°€ childê°€ ëœë‹¤.
+// A->left_childì— rotate_RR(B)ê°€ ë°˜í™˜í•˜ëŠ” ê°’ì„ ëŒ€ìž…í•œë‹¤. (B,Cì— ëŒ€í•´ ì™¼ìª½ íšŒì „)
+// rotate_RR(B)í˜¸ì¶œì‹œ Bì™€ Cê°€ ë³€í™”ê°€ ìƒê¸°ê³  ë‹¤ì‹œ rotate_LL(A)ì„ í˜¸ì¶œí•˜ë©´ ê· í˜•íŠ¸ë¦¬ê°€ ëœë‹¤. 
 
-int get_height(struct node* node) //Æ®¸®ÀÇ ³ôÀÌ ÃøÁ¤
+int get_height(struct node* node) //íŠ¸ë¦¬ì˜ ë†’ì´ ì¸¡ì •
 {
 	int height = 0;
 	if (node != NULL)
@@ -93,14 +93,14 @@ struct node* balance_tree(struct node* node)
 {
 	int height_diff = get_balance(node);
 
-	if (height_diff > 1) // ¿ÞÂÊ ¼­ºêÆ®¸®ÀÇ ±ÕÇüÀ» ¸ÂÃá´Ù
+	if (height_diff > 1) // ì™¼ìª½ ì„œë¸ŒíŠ¸ë¦¬ì˜ ê· í˜•ì„ ë§žì¶˜ë‹¤
 	{
 		if (get_balance((node)->left ) > 0)
 			node = rotate_LL(node);
 		else
 			node = rotate_LR(node);
 	}
-	else if (height_diff < -1) // ¿À¸¥ÂÊ ¼­ºêÆ®¸®ÀÇ ±ÕÇüÀ» ¸ÂÃá´Ù
+	else if (height_diff < -1) // ì˜¤ë¥¸ìª½ ì„œë¸ŒíŠ¸ë¦¬ì˜ ê· í˜•ì„ ë§žì¶˜ë‹¤
 	{
 		if (get_balance((node)->right ) < 0)
 			node = rotate_RR(node);
