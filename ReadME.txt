@@ -1,1 +1,0 @@
-This page is for 2021 C language Data Structure Study Group.
