@@ -3,10 +3,6 @@
 #include <string.h>
 #include <time.h>
 
-
-
-
-#if 0
 #define print(x) printf("%d\n", x)
 #define printp(x) printf("%p\n", x)
 #define Line printf("/* ----------------------------- */\n\n") 
@@ -155,4 +151,3 @@ void deleteStack(Stack* stk)
     Line;
     printf("Stack [%s] is deleted...", toString(stk));
 }
-#endif
